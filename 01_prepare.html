@@ -8,7 +8,7 @@
 
 <div id="test">尚硅谷IT教育</div>
 
-<ul id="test">
+<ul id="demo">
   <li>test1</li>
   <li>test2</li>
   <li>test3</li>
@@ -34,6 +34,74 @@
   const attrNode = elementNode.getAttributeNode('id')
   const textNode = elementNode.firstChild
   console.log(elementNode.nodeType, attrNode.nodeType, textNode.nodeType)
+
+  const obj = {
+      firstName: 'A',
+      lastName: 'B'
+  }
+
+  Object.defineProperty(obj, 'fullName', {
+      get () {
+          return this.firstName + '-' + this.lastName
+      },
+      set (value) {
+          const names = value.split('-')
+          this.firstName = names[0]
+          this.lastName = names[1]
+      }
+  })
+
+  console.log(obj.fullName)
+  obj.firstName = 'C'
+  obj.lastName = 'D'
+  console.log(obj.fullName)
+  obj.fullName = 'E-F'
+  console.log(obj.firstName, obj.lastName)
+
+  Object.defineProperty(obj, 'fullName2', {
+    configurable: false, //是否可以重新define
+    enumerable: true, // 是否可以枚举(for..in / keys())
+    value: 'G-H', // 指定初始值
+    writable: false // value是否可以修改
+  })
+
+  console.log(obj.fullName2)
+    obj.fullName2 = 'J-K'
+  console.log(obj.fullName2)
+
+  // Object.defineProperty(obj, 'fullName2', {
+  //     configurable: false, //是否可以重新define
+  //     enumerable: false, // 是否可以枚举(for..in / keys())
+  //     value: 'G-H', // 指定初始值
+  //     writable: true // value是否可以修改
+  // })
+
+    const names = Object.keys(obj)
+    console.log(names)
+
+  console.log(obj.hasOwnProperty('fullName'), obj.hasOwnProperty('toString'))
+
+/*  <ul id="demo">
+      <li>test1</li>
+      <li>test2</li>
+      <li>test3</li>
+      </ul>*/
+
+  const ul = document.getElementById('demo')
+  const fragment = document.createDocumentFragment()
+    let child
+  while (child=ul.firstChild){
+      fragment.appendChild(child)
+  }
+  Array.prototype.slice.call(fragment.childNodes).forEach(node => {
+      if (node.nodeType===1){
+          node.textContent = 'hello'
+      }
+  })
+    ul.appendChild(fragment)
+
+
+
 
 
   // const lis = document.getElementsByTagName('li') // lis是伪数组(是一个特别的对象, length和数值下标属性)

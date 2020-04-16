@@ -15,6 +15,7 @@
   <p>{{name}}</p>
   <p v-text="name"></p>
   <p v-text="wife.name"></p>
+<!--  <p v-text="wife.name"></p>-->
   <button v-on:click="update">更新</button>
 </div>
 
@@ -30,28 +31,50 @@ watcher
   多层表达式的watcher对应多个dep    {{a.b.c}}
 -->
 
-
 <script type="text/javascript" src="js/mvvm/compile.js"></script>
-<script type="text/javascript" src="js/mvvm/mvvm.js"></script>
 <script type="text/javascript" src="js/mvvm/observer.js"></script>
 <script type="text/javascript" src="js/mvvm/watcher.js"></script>
+<script type="text/javascript" src="js/mvvm/mvvm.js"></script>
 <script type="text/javascript">
-  new MVVM({
+  new MVVM ({
     el: '#test',
     data: {
-      name: 'sadamu',  // dep0
-      wife: { // dep1
-        name: 'binbin', // dep2
-        age: 18 // dep3
+      name: 'feifei',
+      wife: {
+        name: 'wife2',
+        age: 28
       }
     },
     methods: {
       update () {
-        this.name = 'avatar'
+        this.name = 'xinxin'
+        this.wife.name = 'yiyi'
       }
     }
   })
 </script>
+
+<!--<script type="text/javascript" src="js/mvvm/compile.js"></script>-->
+<!--<script type="text/javascript" src="js/mvvm/mvvm.js"></script>-->
+<!--<script type="text/javascript" src="js/mvvm/observer.js"></script>-->
+<!--<script type="text/javascript" src="js/mvvm/watcher.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--  new MVVM({-->
+<!--    el: '#test',-->
+<!--    data: {-->
+<!--      name: 'sadamu',  // dep0-->
+<!--      wife: { // dep1-->
+<!--        name: 'binbin', // dep2-->
+<!--        age: 18 // dep3-->
+<!--      }-->
+<!--    },-->
+<!--    methods: {-->
+<!--      update () {-->
+<!--        this.name = 'avatar'-->
+<!--      }-->
+<!--    }-->
+<!--  })-->
+<!--</script>-->
 </body>
 
 </html>

@@ -70,7 +70,7 @@ Compile.prototype = {
       var attrName = attr.name;
       // 判断是否是指令属性
       if (me.isDirective(attrName)) {
-        // 得到表达式(属性值): test
+        // 得到表达式(属性值): show
         var exp = attr.value;
         // 得到指令名: on:click
         var dir = attrName.substring(2);

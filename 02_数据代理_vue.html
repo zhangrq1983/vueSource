@@ -9,15 +9,26 @@
 <div id="test"></div>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
-  const vm = new Vue({
-    el: "#test",
+  const vm = new Vue ({
+    el: '#test',
     data: {
-      name: '张三'
+      name: 'feifei'
     }
   })
-  console.log(vm.name)  // 读取的是data中的name,  vm代理对data的读操作
-  vm.name = '李四' // 数据保存到data中的name上, vm代理对data的写操作
-  console.log(vm.name, vm._data.name)
+
+  console.log(vm.name, vm)
+  vm.name = 'xiaoxiao'
+  console.log(vm._data.name, vm.name)
+
+  // const vm = new Vue({
+  //   el: "#test",
+  //   data: {
+  //     name: '张三'
+  //   }
+  // })
+  // console.log(vm.name)  // 读取的是data中的name,  vm代理对data的读操作
+  // vm.name = '李四' // 数据保存到data中的name上, vm代理对data的写操作
+  // console.log(vm.name, vm._data.name)
 
 
 </script>
